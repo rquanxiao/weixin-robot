@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== 微信机器人 ===
 Contributors: denishua
 Donate link: https://me.alipay.com/denishua
 Tags: Weixin
