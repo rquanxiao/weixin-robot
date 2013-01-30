@@ -3,7 +3,7 @@
 Plugin Name: 微信回复机器人
 Plugin URI: http://blog.wpjam.com/project/weixin-robot/
 Description: 微信机器人的主要功能就是能够将你的公众账号和你的 WordPress 博客联系起来，搜索和用户发送信息匹配的日志，并自动回复用户，让你使用微信进行营销事半功倍。<br />定制高级版本的微信机器人请联系 Denis，QQ：11497107。
-Version: 1.0
+Version: 1.0.1
 Author: Denis
 Author URI: http://blog.wpjam.com/
 */
@@ -132,6 +132,8 @@ class wechatCallback
         if(have_posts()){
             while (have_posts()) {
                 the_post();
+
+                global $post;
 
                 $title =get_the_title(); 
                 $excerpt = get_post_excerpt($post);
