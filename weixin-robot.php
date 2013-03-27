@@ -3,13 +3,16 @@
 Plugin Name: 微信回复机器人
 Plugin URI: http://blog.wpjam.com/project/weixin-robot/
 Description: 微信机器人的主要功能就是能够将你的公众账号和你的 WordPress 博客联系起来，搜索和用户发送信息匹配的日志，并自动回复用户，让你使用微信进行营销事半功倍。<br />定制高级版本的微信机器人请联系 Denis，QQ：11497107。
-Version: 1.0.1
+Version: 1.1
 Author: Denis
 Author URI: http://blog.wpjam.com/
 */
 
-//define your token
+//定义微信 Token
 define("WEIXIN_TOKEN", "weixin");
+
+//定义默认缩略图
+define("WEIXIN_DEFAULT", '');
 
 add_action('pre_get_posts', 'wpjam_wechat_redirect', 4);
 function wpjam_wechat_redirect($wp_query){
@@ -58,7 +61,12 @@ class wechatCallback
                 $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
-                $this->keyword = strtolower(trim($postObj->Content));
+                $msgType = strtolower(trim($postObj->MsgType));
+                if($msgType == 'event'){
+                    $this->keyword = strtolower(trim($postObj->Event));
+                }else{
+                    $this->keyword = strtolower(trim($postObj->Content));
+                }
             }
 
             $time = time();
@@ -87,7 +95,7 @@ class wechatCallback
 
             if(in_array($this->keyword, $weixin_custom_keywords)){
                 do_action('weixin_robot',$this->keyword,$textTpl, $picTpl);
-            }elseif($this->keyword == 'hi' || $this->keyword == '您好'  || $this->keyword == '你好' ||$this->keyword == 'hello2bizuser' ){
+            }elseif($this->keyword == 'hi' || $this->keyword == '您好'  || $this->keyword == '你好' || $this->keyword == 'subscribe' ){
                 $weixin_welcome = "请输入关键字开始搜索！";
                 $weixin_welcome = apply_filters('weixin_welcome',$weixin_welcome);
                 echo sprintf($textTpl, $weixin_welcome);
@@ -102,7 +110,7 @@ class wechatCallback
                     $weixin_keyword_too_long = apply_filters('weixin_keywords_too_long',$weixin_keyword_too_long);
                     echo sprintf($textTpl, $weixin_keyword_too_long);
                 }elseif( !empty( $this->keyword )){
-                    $this->search();
+                    $this->query();
                     if($this->articleCount == 0){
                         $weixin_not_found = "抱歉，没有找到与【{$this->keyword}】相关的文章，要不你更换一下关键字，可能就有结果了哦 :-) ";
                         $weixin_not_found = apply_filters('weixin_not_found', $weixin_not_found, $this->keyword);
@@ -118,16 +126,16 @@ class wechatCallback
         }
     }
 
-    private function search(){
+    private function query(){
         global $wp_query;
 
         $weixin_count = 5;
         $weixin_count = apply_filters('weixin_count',$weixin_count);
 
-        $weixin_search_array = array('s' => $this->keyword, 'posts_per_page' => $weixin_count , 'post_status' => 'publish' );
-        $weixin_search_array = apply_filters('weixin_search',$weixin_search_array);
+        $weixin_query_array = array('s' => $this->keyword, 'posts_per_page' => $weixin_count , 'post_status' => 'publish' );
+        $weixin_query_array = apply_filters('weixin_query',$weixin_query_array);
 
-        $wp_query->query($weixin_search_array);
+        $wp_query->query($weixin_query_array);
 
         if(have_posts()){
             while (have_posts()) {
@@ -144,6 +152,10 @@ class wechatCallback
                     $thumb = $thumb[0];
                 }else{
                     $thumb = get_post_first_image($post->post_content);
+                }
+
+                if(!$thumb && WEIXIN_DEFAULT){
+                    $thumb = WEIXIN_DEFAULT;
                 }
 
                 $link = get_permalink();
@@ -179,11 +191,11 @@ class wechatCallback
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];    
                 
-        $token = apply_filters('weixin_token',WEIXIN_TOKEN);
+        $weixin_token = apply_filters('weixin_token',WEIXIN_TOKEN);
         if(isset($_GET['debug'])){
-            echo "\n".'WEIXIN_TOKEN：'.$token;
+            echo "\n".'WEIXIN_TOKEN：'.$weixin_token;
         }
-        $tmpArr = array($token, $timestamp, $nonce);
+        $tmpArr = array($weixin_token, $timestamp, $nonce);
         sort($tmpArr);
         $tmpStr = implode( $tmpArr );
         $tmpStr = sha1( $tmpStr );

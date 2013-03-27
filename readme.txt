@@ -32,6 +32,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.1 =
+
+* 修正新用户订阅提示问题：新用户订阅，将由之前推送一条“Hello2BizUser”文本，变化为推送一条“subscribe”的事件。
+* 新增 WEIXIN_DEFAULT 常量，用于设置，在没有缩略图时候的默认缩略图。
+
+
 = 1.0.1 =
 
 修正特色图片的问题。
