@@ -32,6 +32,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 2.0 =
+
+* 支持后台设置。
+
 = 1.1 =
 
 * 修正新用户订阅提示问题：新用户订阅，将由之前推送一条“Hello2BizUser”文本，变化为推送一条“subscribe”的事件。
