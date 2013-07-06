@@ -27,10 +27,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Screenshots ==
 
-1. 微信接口配置
+1. 微信接口配置。
 2. 微信回复机器人。
+3. 微信回复机器人后台设置。
 
 == Changelog ==
+
+= 2.0.1 =
+
+* 修正bug。
 
 = 2.0 =
 
