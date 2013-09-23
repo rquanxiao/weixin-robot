@@ -1,20 +1,25 @@
-=== 微信机器人 ===
+=== 微信机器人（已支持易信） ===
 Contributors: denishua
 Donate link: https://me.alipay.com/denishua
 Tags: Weixin
 Requires at least: 3.0
-Tested up to: 3.6
+Tested up to: 3.6.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 微信机器人将公众账号和 WordPress 博客联系起来，搜索和用户发送信息匹配的日志，并自动回复用户。
 
+
 == Description ==
 
 微信机器人的主要功能就是能够将你的公众账号和你的 WordPress 博客联系起来，搜索和用户发送信息匹配的日志，并自动回复用户，让你使用微信进行营销事半功倍。
 
+同时也支持易信。
+
 详细介绍： http://blog.wpjam.com/project/weixin-robot/
+
+购买高级版：http://wpjam.net/item/weixin-robot-advanced/
 
 
 == Installation ==
