@@ -3,7 +3,7 @@ Contributors: denishua
 Donate link: https://me.alipay.com/denishua
 Tags: Weixin
 Requires at least: 3.0
-Tested up to: 3.5.1
+Tested up to: 3.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 3. 微信回复机器人后台设置。
 
 == Changelog ==
+
+= 2.1 =
+
+支持易信
 
 = 2.0.1 =
 
