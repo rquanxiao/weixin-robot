@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 详细介绍： http://blog.wpjam.com/project/weixin-robot/
 
-购买高级版：http://wpjam.net/item/weixin-robot-advanced/
+购买高级版： http://wpjam.net/item/weixin-robot-advanced/
 
 
 == Installation ==
