@@ -38,6 +38,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 3.0 =
+
+bug 修复。
+
 = 2.1 =
 
 支持易信
