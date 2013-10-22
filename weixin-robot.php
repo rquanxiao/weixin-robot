@@ -3,7 +3,7 @@
 Plugin Name: 微信机器人
 Plugin URI: http://blog.wpjam.com/project/weixin-robot/
 Description: 微信机器人的主要功能就是能够将你的公众账号和你的 WordPress 博客联系起来，搜索和用户发送信息匹配的日志，并自动回复用户，让你使用微信进行营销事半功倍。
-Version: 3.0
+Version: 3.1
 Author: Denis
 Author URI: http://blog.wpjam.com/
 */

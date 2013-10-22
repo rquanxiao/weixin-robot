@@ -158,7 +158,7 @@ function weixin_robot_advanced_setting_page() {
 add_action( 'admin_init', 'weixin_robot_admin_init' );
 function weixin_robot_admin_init() {
 	weixin_robot_add_settings('basic');
-	weixin_robot_add_settings('advanced');
+	//weixin_robot_add_settings('advanced');
 }
 
 function weixin_robot_add_settings($type){
