@@ -38,6 +38,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 4.0 =
+
+新增自定义菜单
+
 = 3.0 =
 
 bug 修复。
