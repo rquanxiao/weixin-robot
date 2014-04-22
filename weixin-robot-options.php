@@ -87,14 +87,13 @@ function weixin_robot_auth_page() {
 
 /* 基本设置的字段 */
 function weixin_robot_get_option_labels(){
-	global $plugin_page;
 
 	$sections					=	array();
 	$option_group               =   'weixin-robot-basic-group';
     $option_name = $option_page =   'weixin-robot-basic';
     $field_validate				=	'weixin_robot_basic_validate';
 
-    if($plugin_page == 'weixin-robot'){
+    if(isset($weixin_robot_basic['weixin_token'])){
     	$basic_section_fields = array(
 			'weixin_token'					=> array('title'=>'微信 Token',		'type'=>'text'),
 			'weixin_default'				=> array('title'=>'默认缩略图',		'type'=>'text'),

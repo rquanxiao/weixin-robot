@@ -1,4 +1,4 @@
-=== 微信机器人（已支持易信） ===
+=== 微信机器人 ===
 Contributors: denishua
 Donate link: https://me.alipay.com/denishua
 Tags: Weixin
