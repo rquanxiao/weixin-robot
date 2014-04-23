@@ -69,6 +69,7 @@ function weixin_robot_check_domain($id=56){
 }
 
 function get_post_weixin_thumb($post,$size){
+	$post = get_post($post);
 	$thumb = apply_filters('weixin_pre_thumb',false,$size,$post);
 
 	if($thumb===false){
